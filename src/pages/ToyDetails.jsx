@@ -9,6 +9,7 @@ export function ToyDetails(){
     const navigate = useNavigate()
     
     useEffect(() => {
+        console.log('toyID',toyId)
         loadToy()
     }, [toyId])
 

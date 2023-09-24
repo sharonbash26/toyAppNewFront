@@ -10,7 +10,7 @@ export function ToyPreview({toy}){
             <p>Price: <span>${toy.price.toLocaleString()}</span></p>
             <h4>InStock: {inStock(toy)}</h4>
             <hr />
-            <Link to={`/toy/${toy._id}`}>Details</Link>
+            <Link to={`/toy/${toy.id}`}>Details</Link>
         </article>
     )
 

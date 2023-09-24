@@ -5,10 +5,10 @@ import { store } from "../store.js";
 
 
 export function loadToys() {
-    const { } = store.getState().toyModule
+    const { filterBy} = store.getState().toyModule
 
     store.dispatch({ type: SET_IS_LOADING, isLoading: true })
-    return toyService.query()
+    return toyService.query(filterBy)
         .then(toys => {
             store.dispatch({ type: SET_TOYS, toys })
         })
@@ -43,10 +43,12 @@ export function removeToyOptimistic(toyId) {
 }
 
 export function saveToy(toy) {
-    const type = toy._id ? UPDATE_TOY : ADD_TOY
+    const type = toy.id ? UPDATE_TOY : ADD_TOY
+    console.log('toy',toy)
     return toyService.save(toy)
         .then(toyToSave => {
             store.dispatch({ type, toy: toyToSave })
+            console.log('toyTosVEE',toyToSave)
             return toyToSave
         })
         .catch(err => {

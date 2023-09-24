@@ -21,7 +21,6 @@ export function ToyFilter({ filterBy, onSetFilter }) {
         setFilterByToEdit((prevFilter) => ({ ...prevFilter, [field]: value }))
     }
 
-
     return (
         <section className="toy-filter full main-layout">
             <h2>Toys Filter</h2>
@@ -29,9 +28,9 @@ export function ToyFilter({ filterBy, onSetFilter }) {
                 <label htmlFor="name">Name:</label>
                 <input type="text"
                     id="name"
-                    name="txt"
+                    name="name"
                     placeholder="By name toy"
-                    value={filterByToEdit.txt}
+                    value={filterByToEdit.name}
                     onChange={handleChange}
                 />
             </form>

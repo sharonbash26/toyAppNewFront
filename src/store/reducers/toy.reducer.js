@@ -22,7 +22,8 @@ const initialState = {
     lastToys: [],
     isCartShown: false,
     shoppingCart: [],
-    isLoading: false
+    isLoading: false,
+    filterBy: toyService.getDefaultFilter()
 }
 
 export function toyReducer(state=initialState,action={}){
@@ -35,7 +36,7 @@ export function toyReducer(state=initialState,action={}){
             return {...state,toys:action.toys,lastToys}
         case REMOVE_TOY:
             lastToys=[...state.toys]
-            toys = state.toys.filter(toy => toy._id !== action.toyId)
+            toys = state.toys.filter(toy => toy.id !== action.toyId)
             return { ...state, toys, lastToys}
         case SET_IS_LOADING:
             return { ...state, isLoading: action.isLoading }
@@ -45,11 +46,12 @@ export function toyReducer(state=initialState,action={}){
             return { ...state, toys }
     
         case UPDATE_TOY:
-                toys = state.toys.map(toy => toy._id === action.toy._id ? action.toy : toy)
+                toys = state.toys.map(toy => toy.id === action.toy.id ? action.toy : toy)
+                console.log('toy',action.toy )
                 return { ...state, toys }
     
         case TOY_UNDO:
-                cars = [...state.lastToys]
+                toys = [...state.lastToys]
                 return { ...state, toys }
     
     
@@ -61,7 +63,7 @@ export function toyReducer(state=initialState,action={}){
                 return { ...state, shoppingCart }
     
         case REMOVE_TOY_FROM_CART:
-                shoppingCart = state.shoppingCart.filter(toy => toy._id !== action.toyId)
+                shoppingCart = state.shoppingCart.filter(toy => toy.id !== action.toyId)
                 return { ...state, shoppingCart }
     
         case CLEAR_CART:

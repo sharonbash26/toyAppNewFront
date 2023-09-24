@@ -6,7 +6,7 @@ import { userService } from "./user.service"
 const BASE_URL = 'toy/'
 const STORAGE_KEY = 'toyDB'
 
-var toys = _createToys()
+// var toys = _createToys()
 
 export const labels = ['On wheels', 'Box game', 'Art', 'Baby', 'Doll', 'Puzzle', 'Outdoor', 'Battery Powered']
 
@@ -19,61 +19,83 @@ export const toyService = {
     getDefaultFilter
 }
 
-function query() {
-    return asyncStorageService.query(STORAGE_KEY).then(toys => {
-        return toys
-    })
+function query(filterBy = {}) {
+    // return asyncStorageService.query(STORAGE_KEY).then(toys => {
+    //     console.log('toys',toys)
+    //     console.log('filterby',filterBy)
+    //     if(filterBy.name){
+    //         const regExp=new RegExp(filterBy.name,'i')
+    //         toys=toys.filter(toy=>regExp.test(toy.name)) 
+    //     }
+    //     // if ('inStock' in filterBy && filterBy.inStock !== "") {  
+    //     //     toys = toys.filter(toy => toy.inStock === filterBy.inStock);
+    //     // }
+
+    //     return toys
+    // })
+    return httpService.get(BASE_URL, filterBy)
+
 }
 
 function get(toyId) {
-    return asyncStorageService.get(STORAGE_KEY, toyId)
+    // return asyncStorageService.get(STORAGE_KEY, toyId)
+    return httpService.get(BASE_URL + toyId)
+
 }
 function remove(toyId) {
-    return asyncStorageService.remove(STORAGE_KEY, toyId)
+    // return asyncStorageService.remove(STORAGE_KEY, toyId)
+    return httpService.delete(BASE_URL + toyId)
+
 }
 
 function save(toy) {
+    console.log('save from servies', toy)
+    //     if (toy._id) {
+    //         return asyncStorageService.put(STORAGE_KEY, toy)
+    //     } else {
+    //         return asyncStorageService.post(STORAGE_KEY, toy)
+    //     }
     if (toy.id) {
-        return asyncStorageService.put(STORAGE_KEY, toy)
+        return httpService.put(BASE_URL, toy)
     } else {
-        return asyncStorageService.post(STORAGE_KEY, toy)
+        return httpService.post(BASE_URL, toy)
     }
 }
 
-function _createToys() {
-    console.log('start create toys')
-    let toys = utilService.loadFromStorage(STORAGE_KEY)
-    if (!toys || !toys.length) {
-        toys = [{
-            _id: utilService.makeId(),
-            name: 'Talking Doll',
-            price: 123,
-            labels: ['Doll', 'Battery Powered', 'Baby'],
-            createdAt: 1631031801011,
-            inStock: true
-        },
-        {
-            _id: utilService.makeId(),
-            name: 'Robot',
-            price: 250,
-            labels: ['Battery Powered'],
-            createdAt: 1631031801022,
-            inStock: true
-        }, {
-            _id: utilService.makeId(),
-            name: 'Dog Toy',
-            price: 50,
-            labels: ['Doll', 'Battery Powered', 'Baby'],
-            createdAt: 1631031702011,
-            inStock: false
-        }
+// function _createToys() {
+//     console.log('start create toys')
+//     let toys = utilService.loadFromStorage(STORAGE_KEY)
+//     if (!toys || !toys.length) {
+//         toys = [{
+//             _id: utilService.makeId(),
+//             name: 'Talking Doll',
+//             price: 123,
+//             labels: ['Doll', 'Battery Powered', 'Baby'],
+//             createdAt: 1631031801011,
+//             inStock: true
+//         },
+//         {
+//             _id: utilService.makeId(),
+//             name: 'Robot',
+//             price: 250,
+//             labels: ['Battery Powered'],
+//             createdAt: 1631031801022,
+//             inStock: true
+//         }, {
+//             _id: utilService.makeId(),
+//             name: 'Dog Toy',
+//             price: 50,
+//             labels: ['Doll', 'Battery Powered', 'Baby'],
+//             createdAt: 1631031702011,
+//             inStock: false
+//         }
 
-        ]
-    }
-    utilService.saveToStorage(STORAGE_KEY, toys)
-    console.log('all toysss', toys)
-    return toys
-}
+//         ]
+//     }
+//     utilService.saveToStorage(STORAGE_KEY, toys)
+//     console.log('all toysss', toys)
+//     return toys
+// }
 
 function getEmptyToy() {
     return {
@@ -82,5 +104,5 @@ function getEmptyToy() {
     }
 }
 function getDefaultFilter() {
-    return { name: '' }
+    return { name: '', inStock: '' }
 }

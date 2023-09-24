@@ -3,16 +3,16 @@ import { ToyList } from '../cmps/ToyList'
 import { ToyFilter } from '../cmps/ToyFilter'
 import { toyService } from '../services/toys.service'
 import { showSuccessMsg, showErrorMsg } from '../services/event-bus.service.js'
-import { loadToys,removeToy,removeToyOptimistic,saveToy} from '../store/actions/toy.actions'
-import { ADD_TOY_TO_CART,SET_FILTER_BY,ADD_TOY} from '../store/reducers/toy.reducer.js'
+import { loadToys, removeToy, removeToyOptimistic, saveToy } from '../store/actions/toy.actions'
+import { ADD_TOY_TO_CART, SET_FILTER_BY, ADD_TOY } from '../store/reducers/toy.reducer.js'
 import { useEffect } from 'react'
 
-export function ToyIndex(){
+export function ToyIndex() {
     const dispatch = useDispatch()
     const toys = useSelector(storeState => storeState.toyModule.toys)
     const filterBy = useSelector(storeState => storeState.toyModule.filterBy)
     const isLoading = useSelector(storeState => storeState.toyModule.isLoading)
- 
+
 
     useEffect(() => {
         loadToys()
@@ -32,7 +32,7 @@ export function ToyIndex(){
                 showErrorMsg('Cannot remove ')
             })
     }
-    
+
     function onAddToy() {
         const toyToSave = toyService.getEmptyToy()
         saveToy(toyToSave)
@@ -47,8 +47,10 @@ export function ToyIndex(){
 
     function onEditToy(toy) {
         const price = +prompt('New price?', toy.price)
+        console.log('new price', price)
         const toyToSave = { ...toy, price }
-        saveCar(toyToSave)
+        console.log('toyToSave', toyToSave)
+        saveToy(toyToSave)
             .then(savedToy => {
                 showSuccessMsg(`Toy updated to price: $${savedToy.price}`)
             })
@@ -67,7 +69,7 @@ export function ToyIndex(){
 
 
 
-    return(
+    return (
         <section className="toyIndex">
             <h3>Toys Shop</h3>
             <main>
@@ -78,7 +80,7 @@ export function ToyIndex(){
                     toys={toys}
                     onRemoveToy={onRemoveToy}
                     onEditToy={onEditToy}
-                    // addToCart={addToCart}
+                // addToCart={addToCart}
                 />
                 }
 
