@@ -8,5 +8,5 @@ export default defineConfig({
     outDir:'../backend/public',
     emptyOutDir:true
   }
-  
+   
 })
