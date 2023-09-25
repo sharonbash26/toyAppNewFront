@@ -8,7 +8,7 @@ const STORAGE_KEY = 'toyDB'
 
 // var toys = _createToys()
 
-export const labels = ['On wheels', 'Box game', 'Art', 'Baby', 'Doll', 'Puzzle', 'Outdoor', 'Battery Powered']
+ const labels = ['On wheels', 'Box game', 'Art', 'Baby', 'Doll', 'Puzzle', 'Outdoor', 'Battery Powered']
 
 export const toyService = {
     query,
@@ -16,10 +16,12 @@ export const toyService = {
     save,
     remove,
     getEmptyToy,
-    getDefaultFilter
+    getDefaultFilter,
+    getDefaultSort,
+    getLabels
 }
 
-function query(filterBy = {}) {
+function query(filterBy = {},sort) {
     // return asyncStorageService.query(STORAGE_KEY).then(toys => {
     //     console.log('toys',toys)
     //     console.log('filterby',filterBy)
@@ -33,7 +35,12 @@ function query(filterBy = {}) {
 
     //     return toys
     // })
-    return httpService.get(BASE_URL, filterBy)
+    console.log('filterby',filterBy)
+    console.log('sort',sort)
+    return httpService.get(BASE_URL, {
+        filterBy,
+        sort
+    })
 
 }
 
@@ -99,10 +106,23 @@ function save(toy) {
 
 function getEmptyToy() {
     return {
-        name: 'Doll-',
-        price: utilService.getRandomIntInclusive(1000, 9000)
+        name: 'Doll',
+        price: utilService.getRandomIntInclusive(1000, 9000),
+        labels:['Box Game','Art'],
+        inStock:true
     }
 }
 function getDefaultFilter() {
     return { name: '', inStock: '' }
+}
+
+function getLabels(){
+    return labels
+}
+
+function getDefaultSort() {
+    return {
+        by: 'name',
+        asc: true
+    }
 }

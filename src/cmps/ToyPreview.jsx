@@ -2,15 +2,16 @@ import { Link } from "react-router-dom";
 import { inStock} from '../store/actions/toy.actions'
 
 export function ToyPreview({toy}){
+    const {name, price, id} = toy || {}
 
     return(
         <article className="toyPreview">
             
-            <h4>{toy.name}</h4>
-            <p>Price: <span>${toy.price.toLocaleString()}</span></p>
+            <h4>{name}</h4>
+            <p>Price: <span>${price.toLocaleString()}</span></p>
             <h4>InStock: {inStock(toy)}</h4>
             <hr />
-            <Link to={`/toy/${toy.id}`}>Details</Link>
+            <Link to={`/toy/${id}`}>Details</Link>
         </article>
     )
 

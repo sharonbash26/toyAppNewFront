@@ -9,7 +9,8 @@ const BASE_URL = process.env.NODE_ENV === 'production'
 
 
 const axios = Axios.create({
-    withCredentials: true //cookies 
+    withCredentials: true, //cookies 
+
 })
 
 export const httpService = {
