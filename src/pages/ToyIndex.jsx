@@ -66,6 +66,7 @@ export function ToyIndex() {
         if (target.type === 'select-multiple') value = Array.from(target.selectedOptions, (option) => option.value)
         setFilterBy({ ...filterBy, [field]: value })
     }
+    
     function onAddToy() {
         const toyToSave = toyService.getEmptyToy()
         saveToy(toyToSave)
