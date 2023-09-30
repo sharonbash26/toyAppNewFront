@@ -6,7 +6,7 @@ import { utilService } from "../services/util.service.js"
 
 const toyLabels = toyService.getLabels()
 
-export function ToyFilter({ filterBy, onSetFilter ,recording}) {
+export function ToyFilter({ filterBy, onSetFilter, recording }) {
 
     const [filterByToEdit, setFilterByToEdit] = useState({ ...filterBy })
 
@@ -25,44 +25,49 @@ export function ToyFilter({ filterBy, onSetFilter ,recording}) {
     }
 
     return (
-        <section className="toy-filter full main-layout">
-            <h2>Toys Filter</h2>
-            <div>Recording:{recording}</div>
-            <form >
-                <label htmlFor="name">Name:</label>
-                <input type="text"
-                    id="name"
-                    name="name"
-                    placeholder="By name toy"
-                    value={filterByToEdit.name}
-                    onChange={handleChange}
-                />
+        <section className="toy-filter">
+            {/* <div>Recording:{recording}</div> */}
+            <section className="second-nav">
 
-                <div className="filter-group">
-                    <label htmlFor="inStock">Filter By:</label>
-                    <select value={filterByToEdit.inStock} name="inStock" id="inStock" onChange={handleChange}>
-                        <option value="">All</option>
-                        <option value="true">In Stock</
-                        option>
-                        <option value="false">Out Of Stock</option>
-                    </select>
-                </div>
+                <form >
+                    <label htmlFor="name">
+                        <img className="search-icon" src="src/assets/imgs/searchIcon.png" alt="Search Icon" />
+                    </label>
+                    <input type="text"
+                        id="name"
+                        name="name"
+                        placeholder="Search toy name"
+                        value={filterByToEdit.name}
+                        onChange={handleChange}
 
-                
-                <div className="filter-group">
-                    <label htmlFor="toys">FIlter By:</label>
-                    <select multiple value={filterByToEdit.labels} name="labels" id="labels" onChange={handleChange}>
-                        <option value="">All</option>
-                        <>
-                            {toyLabels.map(label => (
-                                <option key={label} value={label}>{label}</option>
-                            ))}
-                        </>
-                    </select>
-                </div>
+                    />
 
-            </form>
+                    <div className="filter-group">
+                        <label htmlFor="inStock">Filter By:</label>
+                        <select value={filterByToEdit.inStock} name="inStock" id="inStock" onChange={handleChange}>
+                            <option value="">All</option>
+                            <option value="true">In Stock</
+                            option>
+                            <option value="false">Out Of Stock</option>
+                        </select>
+                    </div>
 
+
+                    <div className="filter-group">
+                        <h4>Filter By</h4>
+                        <label htmlFor="toys"></label>
+                        <select multiple value={filterByToEdit.labels} name="labels" id="labels" onChange={handleChange}>
+                            <option value="">All</option>
+                            <>
+                                {toyLabels.map(label => (
+                                    <option key={label} value={label}>{label}</option>
+                                ))}
+                            </>
+                        </select>
+                    </div>
+
+                </form>
+            </section>
         </section>
     )
 }

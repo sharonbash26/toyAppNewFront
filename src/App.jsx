@@ -1,7 +1,7 @@
 import { Route, HashRouter as Router, Routes } from 'react-router-dom'
 import { useState } from 'react'
 import { Provider } from 'react-redux'
-import './assets/style/main.css'
+// import './assets/style/main.css'
 
 import { AboutUs } from './pages/AboutUs'
 import { AppHeader } from './cmps/AppHeader'
@@ -10,6 +10,7 @@ import { store } from './store/store'
 // import { AppFooter } from './cmps/AppFooter'
 import { ToyIndex } from './pages/ToyIndex'
 import { ToyDetails } from './pages/ToyDetails'
+import './assets/style/main.scss'
 
 export function App() {
 

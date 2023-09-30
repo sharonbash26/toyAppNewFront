@@ -1,0 +1,16 @@
+@mixin btn($fontSize) {
+    border-radius: 4.5em;
+    background: linear-gradient(279deg, #DC8F95 -34.41%, #CB655B 114.58%);
+    box-shadow: 0px 4px 8px 0px rgba(0, 0, 0, 0.15);
+    color: #FFF;
+    font-family: Poppins;
+    font-size:$fontSize;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 116.9%;
+    letter-spacing: 0.0275em;
+    padding: 0.625em;
+    margin-left: 45%;
+    cursor: pointer;
+
+}

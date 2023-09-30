@@ -26,13 +26,16 @@ export function ToyDetails() {
     if (!toy) return <div>Loading...</div>
 
     return (
-        <section className="ToyDetails">
-            <h1>Toy name : {toy.name}</h1>
-            <h5>Price: ${toy.price}</h5>
-            <p>In Stock:{inStock(toy)}</p>
-            <p>Labels:{toy.labels}</p>
-            <p>Created At: {new Date(toy.createdAt).toLocaleString()}</p>
-            <Link to="/toy">Back</Link>
+        <section className="toy-details-container">
+            <div className="toy-details-content">
+                <h1>{toy.name}</h1>
+                <h5>Price: ${toy.price}</h5>
+                <p>In Stock: {inStock(toy)}</p>
+                <p>Labels: {toy.labels}</p>
+                <p>Created At: {new Date(toy.createdAt).toLocaleString()}</p>
+                <Link className="back-btn" to="/toy">Back</Link>
+            </div>
         </section>
+
     )
 }

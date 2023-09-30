@@ -1,0 +1,15 @@
+@import 'setup/mixins';
+// @import 'setup/functions';
+// @import 'setup/variables';
+ @import 'setup/base/base';
+@import './cmps/AppHeader';
+@import './cmps/ToyIndex';
+@import './cmps/ToyDetails';
+@import './cmps/MyForm';
+@import './cmps/ToySort';
+@import './cmps/ToyPreview';
+@import './cmps/ToyList';
+// @import './cmps/ToyDetails';
+@import './cmps/ToyFilter';
+
+

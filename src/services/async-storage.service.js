@@ -11,16 +11,24 @@ function query(entityType, delay = 700) {
     return new Promise(resolve => setTimeout(() => resolve(entities), delay))
 }
 
-function get(entityType, entityId) {
+async function get(entityType, entityId) {
+    // try {
+    //     const entities = await query(entityType)
+    //     const entity = entities.find(entity => entity._id === entityId)
+    //     if (!entity) throw new Error(`Get failed, cannot find entity with id: ${entityId} in: ${entityType}`)
+    //     return entity
+    // } catch (err) {
+    //     console.log(err)
+    // }
+
     return query(entityType).then(entities => {
         const entity = entities.find(entity => entity._id === entityId)
-        if (!entity) throw new Error(`Get failed, cannot find entity with id: ${entityId} in: ${entityType}`)
         return entity
     })
 }
 
 function post(entityType, newEntity) {
-    newEntity = {...newEntity}
+    newEntity = { ...newEntity }
     newEntity._id = _makeId()
     return query(entityType).then(entities => {
         entities.push(newEntity)

@@ -1,4 +1,5 @@
 import { useDispatch, useSelector } from 'react-redux'
+// import { useEffect, useState } from "react"
 import { ToyList } from '../cmps/ToyList'
 import { ToyFilter } from '../cmps/ToyFilter'
 import { toyService } from '../services/toys.service'
@@ -66,7 +67,7 @@ export function ToyIndex() {
         if (target.type === 'select-multiple') value = Array.from(target.selectedOptions, (option) => option.value)
         setFilterBy({ ...filterBy, [field]: value })
     }
-    
+
     function onAddToy() {
         const toyToSave = toyService.getEmptyToy()
         saveToy(toyToSave)
@@ -105,17 +106,23 @@ export function ToyIndex() {
 
 
         <section className="toyIndex">
-            <h3>Toys Shop</h3>
-            <animated.div {...bindEmoji1()} style={{ x, y }} className="emoji">😃</animated.div>
-            <animated.div {...bindEmoji2()} style={{ x, y }} className="emoji">👽</animated.div>
-            <animated.div {...bindEmoji3()} style={{ x, y }} className="emoji">😈</animated.div>
-            <Dictaphone setRecording={setRecording} />
-            <MyForm />
-            <main>
-                <button onClick={onAddToy}>Add Toy ⛐</button>
-                <ToyFilter filterBy={filterBy} onSetFilter={onSetFilter} recording={recording}/>
-                <ToySort sort={sort} onSetSort={onSetSort} />
+            {/* <h3>Toys Shop</h3> */}
+            {/* this is just for me check drag and drop libray */}
+            {/* <animated.div {...bindEmoji1()} style={{ x, y }} className="emoji">😃</animated.div> */}
+            {/* <animated.div {...bindEmoji2()} style={{ x, y }} className="emoji">👽</animated.div> */}
+            {/* <animated.div {...bindEmoji3()} style={{ x, y }} className="emoji">😈</animated.div> */}
 
+
+            {/* <div className='record-section'>
+                <Dictaphone setRecording={setRecording} />
+            </div> */}
+
+          
+            <section className='toy-controls'>
+                <button onClick={onAddToy}>Add Toy ⛐</button>
+                <ToyFilter filterBy={filterBy} onSetFilter={onSetFilter} recording={recording} />
+                <ToySort sort={sort} onSetSort={onSetSort} />
+                </section>
                 {!isLoading && <ToyList
                     toys={toys}
                     onRemoveToy={onRemoveToy}
@@ -126,7 +133,7 @@ export function ToyIndex() {
 
                 {isLoading && <div>Loading...</div>}
                 <hr />
-            </main>
+           
         </section>
 
 

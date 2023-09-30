@@ -24,7 +24,7 @@ export function Dictaphone({setRecording}) {
     setRecording(transcript)
   }, [transcript])
   return (
-    <div>
+    <div className='microPhone'>
       <p>Microphone: {listening ? 'on' : 'off'}</p>
       <button onClick={SpeechRecognition.startListening}>Start</button>
       <button onClick={SpeechRecognition.stopListening}>Stop</button>
@@ -35,11 +35,4 @@ export function Dictaphone({setRecording}) {
 };
 export default Dictaphone;
 
-// ToyIndex
-// const [recording, setRecording] = useState('')
-// function onSetRecording(record) {
-//   setRecording(record)
-// }
-
-{/* <Dictaphone onSetRecording={onSetRecording}/> */ }
-{/* <ToyFilter recording={recording}/> */ }
+//update for submit

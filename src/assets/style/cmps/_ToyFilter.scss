@@ -1,0 +1,26 @@
+.toy-filter{
+    .search-icon{
+        width: 0.8125em;
+        margin-right: 1px; 
+    }
+
+    .second-nav{
+        display: flex;  // Use Flexbox
+        justify-content: space-between;  // Distribute items evenly with maximum space in-between
+        align-items: center;  // Center items vertically
+        flex-wrap: wrap;
+    }
+    form {
+        display: flex;  // Use Flexbox for the inner elements of the form
+        align-items: center;  // Center inner items vertically
+        gap: 0.625em;  // Add space between direct children of the form (might not work on older browsers)
+
+        .filter-group {
+            margin-left: 1.25em;  // Adds some space between the input and filter groups
+        }
+
+        input[type="text"] {
+            margin-right: 1.25em;  // Adds some space to the right of the input for spacing
+        }
+    }
+}

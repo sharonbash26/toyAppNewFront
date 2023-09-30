@@ -1,0 +1,56 @@
+.toy-details-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 80vh;
+    background-color: #f3f4f6;
+    background-image: url('01.png');
+    // background-color:#e8c3c6;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+
+
+    .toy-details-content {
+        max-width: 400px;
+        /* You can adjust as needed */
+        padding: 20px;
+        background-color: #ffffff;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        /* subtle shadow for elevation effect */
+        border-radius: 8px;
+        /* rounded corners */
+        text-align: center;
+    }
+
+    h1 {
+        color: #333;
+        font-size: 1.8rem;
+        margin-bottom: 15px;
+    }
+
+    h5 {
+        color: #555;
+        font-size: 1.4rem;
+        margin-bottom: 10px;
+    }
+
+    p {
+        color: #777;
+        font-size: 1rem;
+        margin-bottom: 8px;
+    }
+
+    .back-btn {
+        display: inline-block;
+        padding: 10px 15px;
+        background-color: #DC8F95;
+        /* Pinkish color for the back button */
+        color: #ffffff;
+        border-radius: 4px;
+        text-decoration: none;
+        transition: background-color 0.3s ease;
+
+  
+    }
+}

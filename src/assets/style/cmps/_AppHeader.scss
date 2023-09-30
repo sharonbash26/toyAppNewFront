@@ -1,0 +1,86 @@
+.app-header {
+    background-image: url('layerToy.png');
+    // background-color:#e8c3c6;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+  
+    
+    .nav-menu {
+        position: absolute;
+        top: 3.125em;
+        right: 0;
+        width: 212.5em;
+        background: white;
+        border: 1px solid #ccc;
+        z-index: 1;
+
+        a {
+            display: block;
+            padding: 0.625em;
+            border-bottom: 1px solid #eee;
+            text-decoration: none;
+            color: black;
+
+            &:hover {
+                background: #f5f5f5;
+            }
+        }
+    }
+
+    h1 {
+        color: #433C36;
+        font-family: Luckiest Guy;
+        font-size: 6.25em;
+        font-style: bold;
+        font-weight: 400;
+        line-height: 100%;
+        letter-spacing: 2px;
+        text-align: center;
+    }
+
+    span {
+        color: #C05B51;
+    }
+
+    p {
+        color: rgba(0, 0, 0, 0.50);
+        font-family: Poppins;
+        font-size: 1.375em;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 138.9%;
+        letter-spacing: 1.54px;
+        text-align: center;
+    }
+
+    .order-now {
+        border-radius: 4.5em;
+        background: linear-gradient(279deg, #DC8F95 -34.41%, #CB655B 114.58%);
+        box-shadow: 0px 4px 8px 0px rgba(0, 0, 0, 0.15);
+        color: #FFF;
+        font-family: Poppins;
+        font-size: 1.375em;
+        font-style: normal;
+        font-weight: 600;
+        line-height: 116.9%;
+        letter-spacing: 0.44px;
+        padding: 10px;
+        margin-left: 45%;
+        margin-bottom: 1rem;
+    }
+    .custom-nav-link {
+        color: #433C36;
+        margin-right: 1.25em; 
+        font-family:Luckiest Guy;
+        font-size: 1.375em;
+        font-style: normal;
+        font-weight: 600; 
+        text-decoration: none;
+
+    
+        &:last-child {
+            margin-right: 0;  
+        }
+    }
+}
