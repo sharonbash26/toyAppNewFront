@@ -57,12 +57,12 @@ function remove(toyId) {
 
 function save(toy) {
     console.log('save from servies', toy)
-    //     if (toy._id) {
+    //     if (toy.___id) {
     //         return asyncStorageService.put(STORAGE_KEY, toy)
     //     } else {
     //         return asyncStorageService.post(STORAGE_KEY, toy)
     //     }
-    if (toy.id) {
+    if (toy._id) {
         return httpService.put(BASE_URL, toy)
     } else {
         return httpService.post(BASE_URL, toy)
@@ -74,7 +74,7 @@ function save(toy) {
 //     let toys = utilService.loadFromStorage(STORAGE_KEY)
 //     if (!toys || !toys.length) {
 //         toys = [{
-//             _id: utilService.makeId(),
+//             ___id: utilService.makeId(),
 //             name: 'Talking Doll',
 //             price: 123,
 //             labels: ['Doll', 'Battery Powered', 'Baby'],
@@ -82,14 +82,14 @@ function save(toy) {
 //             inStock: true
 //         },
 //         {
-//             _id: utilService.makeId(),
+//             ___id: utilService.makeId(),
 //             name: 'Robot',
 //             price: 250,
 //             labels: ['Battery Powered'],
 //             createdAt: 1631031801022,
 //             inStock: true
 //         }, {
-//             _id: utilService.makeId(),
+//             ___id: utilService.makeId(),
 //             name: 'Dog Toy',
 //             price: 50,
 //             labels: ['Doll', 'Battery Powered', 'Baby'],

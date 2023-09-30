@@ -1,9 +1,9 @@
 .my-form {
-    position: relative;  
+    // position: relative;  
     .signin-btn {
-        position: absolute;  // Absolutely position the button
-        top: 0;  // Position 10px from the top
-        right: 0.625em;
+        // position: absolute;  // Absolutely position the button
+        // top: 0;  // Position 10px from the top
+        // right: 0.625em;
         @include btn(0.875em)
     }
 

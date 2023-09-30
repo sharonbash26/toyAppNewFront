@@ -2,6 +2,7 @@ import React from 'react';
 import { Formik, Form, Field } from 'formik';
 import * as Yup from "yup";
 import { useEffect, useState } from "react"
+import { login } from '../store/actions/user.actions'
 
 const SignupSchema = Yup.object().shape({
     firstName: Yup.string()
@@ -12,16 +13,22 @@ const SignupSchema = Yup.object().shape({
         .min(2, 'Too Short!')
         .max(50, 'Too Long!')
         .required('Required'),
-    email: Yup.string().email('Invalid email').required('Required'),
+    // email: Yup.string().email('Invalid email').required('Required'),
 });
 
 export function MyForm() {
-    const [isFormVisible, setFormVisible] = useState(false); 
-
+    const [isFormVisible, setFormVisible] = useState(false);
+    function signIn(values) {
+        const { firstName:username, lastName:password} = values
+        console.log('values', values)
+        // const fullname=firstName+lastName
+        const corditions={password,username}
+        login(corditions)
+    }
 
     return (
         <div className='my-form'>
-            <button 
+            <button
                 className="signin-btn"
                 onClick={() => setFormVisible(!isFormVisible)}  // Toggle form visibility
             >
@@ -36,22 +43,22 @@ export function MyForm() {
                         email: '',
                     }}
                     validationSchema={SignupSchema}
-                    onSubmit={values => {
-                        console.log(values);
-                    }}
+                    onSubmit={signIn
+                    }
                 >
                     {({ errors, touched }) => (
                         <Form>
-                            <Field name="firstName" />
+                            <Field name="firstName" placeholder="enter full name"/>
                             {errors.firstName && touched.firstName ? (
                                 <div>{errors.firstName}</div>
                             ) : null}
-                            <Field name="lastName" />
+                            <Field name="lastName"placeholder="password" />
+
                             {errors.lastName && touched.lastName ? (
                                 <div>{errors.lastName}</div>
                             ) : null}
-                            <Field name="email" type="email" />
-                            {errors.email && touched.email ? <div>{errors.email}</div> : null}
+                            {/* <Field name="email" type="em" placeholder="enter userName(email)"/>
+                            {errors.email && touched.email ? <div>{errors.email}</div> : null} */}
                             <button type="submit">Submit</button>
                         </Form>
                     )}
